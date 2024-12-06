@@ -1,0 +1,89 @@
+----------------Admin switch-----------------
+en
+conf t
+vlan 10
+name Admin
+int range fa0/1-24
+switchport mode access
+switch access vlan 10
+do wr
+exit
+
+----------------HR switch-----------------
+en
+conf t
+vlan 20
+name HR
+int range fa0/1-24
+switchport mode access
+switch access vlan 20
+do wr
+exit
+
+----------------Accounts switch-----------------
+en
+conf t
+vlan 30
+name Accounts
+int range fa0/1-24
+switchport mode access
+switch access vlan 30
+do wr
+exit
+
+----------------Admission switch-----------------
+en
+conf t
+vlan 40
+name Admission
+int range fa0/1-24
+switchport mode access
+switch access vlan 40
+do wr
+exit
+
+
+----------------FSIT switch-----------------
+en
+conf t
+vlan 50
+name FSIT
+int range fa0/1-24
+switchport mode access
+switch access vlan 50
+do wr
+exit
+
+----------------FBE switch-----------------
+en
+conf t
+vlan 60
+name FBE
+int range fa0/1-24
+switchport mode access
+switch access vlan 60
+do wr
+exit
+
+----------------Computer Lab switch-----------------
+en
+conf t
+vlan 70
+name ComputerLab
+int range fa0/1-24
+switchport mode access
+switch access vlan 70
+do wr
+exit
+
+
+----------------IT Room switch-----------------
+en
+conf t
+vlan 80
+name ITroom
+int range fa0/1-24
+switchport mode access
+switch access vlan 80
+do wr
+exit
