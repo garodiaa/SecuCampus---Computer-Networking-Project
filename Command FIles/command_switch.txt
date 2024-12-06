@@ -144,3 +144,45 @@ switchport access vlan 80
 
 do wr
 exit
+
+################################ Branch Campus ###############################
+
+-------------------Branch Campus Staff Room Switch---------------
+en
+conf t
+vlan 90
+name Staffroom
+int range fa0/1-24
+switchport mode access
+switch access vlan 90
+do wr
+exit
+
+-------------------Student Lab Switch---------------
+en
+conf t
+vlan 100
+name StudentLab
+int range fa0/1-24
+switchport mode access
+switch access vlan 100
+do wr
+exit
+
+-------------------branch campus big Switch---------------
+en
+conf t
+vlan 90
+name Staffroom
+int gig1/0/2
+switchport mode access
+switchport access vlan 90
+
+vlan 100
+name StudentLab
+int gig1/0/3
+switchport mode access
+switchport access vlan 100
+
+do wr
+exit
