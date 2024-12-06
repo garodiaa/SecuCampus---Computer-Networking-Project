@@ -23,6 +23,17 @@ int se0/1/1
 clock rate 64000
 do wr
 
+###################thirdly
+en
+conf t
+int se0/1/1
+ip address 10.10.10.1 255.255.255.252
+
+int se0/1/0
+ip address 10.10.10.5 255.255.255.252
+
+exit
+do wr
 
 --------Cloud Server Router-----------
 en
@@ -34,8 +45,21 @@ int se0/2/0
 no shut
 do wr
 
+###################secondly
+en
+conf t
+int se0/2/0
+ip address 10.10.10.6 255.255.255.252
+
+int gig0/0
+ip address 20.0.0.1 255.255.255.252
+
+exit
+do wr
+
 
 --------Branch Campus Router-----------
+####################firstly
 en
 conf t
 int gig0/0
@@ -43,4 +67,45 @@ no shut
 
 int se0/1/0
 no shut
+do wr
+
+###################secondly
+en
+conf t
+int se0/1/0
+ip address 10.10.10.2 255.255.255.252
+
+exit
+do wr
+
+###################thirdly
+en
+conf t
+int gig0/0.90
+
+encapsulation dot1Q 90
+ip address 192.168.9.1  255.255.255.0
+ex
+
+int gig0/0.100
+encapsulation dot1Q 100
+ip address 192.168.10.1  255.255.255.0
+ex
+do wr
+
+###################forthly
+service dhcp
+
+ip dhcp pool Staff-pool
+network 192.168.9.0 255.255.255.0
+default-router 192.168.9.1
+dns-server 192.168.9.1
+ex
+do wr
+
+ip dhcp pool StudentLab-pool
+network 192.168.10.0 255.255.255.0
+default-router 192.168.10.1
+dns-server 192.168.10.1
+ex
 do wr

@@ -149,7 +149,7 @@ exit
 en
 conf t
 int gig1/0/1
-switchport trunk encapsulation dotlq
+switchport trunk encapsulation dot1Q
 switchport mode trunk
 exit
 do wr
@@ -197,8 +197,9 @@ do wr
 exit
 
 
+#############secondly
 int gig1/0/1
-switchport trunk encapsulation dotlq
+switchport trunk encapsulation dot1Q
 switchport mode trunk
 exit
 do wr
