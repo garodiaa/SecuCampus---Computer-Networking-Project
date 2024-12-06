@@ -1,0 +1,35 @@
+--------DSC Campus Router-----------
+
+en
+conf t
+int gig0/0
+no shut
+
+int se0/1/0
+no shut
+
+int se0/1/1
+no shut
+
+do wr
+
+--------Cloud Server Router-----------
+en
+conf t
+int gig0/0
+no shut
+
+int se0/2/0
+no shut
+do wr
+
+
+--------Branch Campus Router-----------
+en
+conf t
+int gig0/0
+no shut
+
+int se0/1/0
+no shut
+do wr
