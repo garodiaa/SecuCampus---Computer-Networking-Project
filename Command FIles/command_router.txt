@@ -35,6 +35,124 @@ ip address 10.10.10.5 255.255.255.252
 exit
 do wr
 
+###################forthly
+
+en
+conf t
+int gig0/0.10
+encapsulation dot1Q 10
+ip address 192.168.1.1  255.255.255.0
+ex
+
+int gig0/0.20
+encapsulation dot1Q 20
+ip address 192.168.2.1  255.255.255.0
+ex
+
+int gig0/0.30
+encapsulation dot1Q 30
+ip address 192.168.3.1  255.255.255.0
+ex
+
+int gig0/0.40
+encapsulation dot1Q 40
+ip address 192.168.4.1  255.255.255.0
+ex
+
+int gig0/0.50
+encapsulation dot1Q 50
+ip address 192.168.5.1  255.255.255.0
+ex
+
+int gig0/0.60
+encapsulation dot1Q 60
+ip address 192.168.6.1  255.255.255.0
+ex
+
+int gig0/0.70
+encapsulation dot1Q 70
+ip address 192.168.7.1  255.255.255.0
+ex
+
+int gig0/0.80
+encapsulation dot1Q 80
+ip address 192.168.8.1  255.255.255.0
+ex
+do wr
+
+###################fifthly
+service dhcp
+
+ip dhcp pool Admin-pool
+network 192.168.1.0 255.255.255.0
+default-router 192.168.1.1
+dns-server 192.168.1.1
+ex
+
+ip dhcp pool HR-pool
+network 192.168.2.0 255.255.255.0
+default-router 192.168.2.1
+dns-server 192.168.2.1
+ex
+
+ip dhcp pool Accounts-pool
+network 192.168.3.0 255.255.255.0
+default-router 192.168.3.1
+dns-server 192.168.3.1
+ex
+
+ip dhcp pool Admission-pool
+network 192.168.4.0 255.255.255.0
+default-router 192.168.4.1
+dns-server 192.168.4.1
+ex
+
+ip dhcp pool FSIT-pool
+network 192.168.5.0 255.255.255.0
+default-router 192.168.5.1
+dns-server 192.168.5.1
+ex
+
+ip dhcp pool FBE-pool
+network 192.168.6.0 255.255.255.0
+default-router 192.168.6.1
+dns-server 192.168.6.1
+ex
+
+ip dhcp pool CompLab-pool
+network 192.168.7.0 255.255.255.0
+default-router 192.168.7.1
+dns-server 192.168.7.1
+ex
+
+ip dhcp pool ITroom-pool
+network 192.168.8.0 255.255.255.0
+default-router 192.168.8.1
+dns-server 192.168.8.1
+ex
+do wr
+
+
+###################sixthly  ( RIPv2 )
+
+en
+conf t
+router rip
+version 2
+network 10.10.10.0
+network 10.10.10.4
+network 192.168.1.0
+network 192.168.2.0
+network 192.168.3.0
+network 192.168.4.0
+network 192.168.5.0
+network 192.168.6.0
+network 192.168.7.0
+network 192.168.8.0
+ex
+do wr
+
+
 --------Cloud Server Router-----------
 en
 conf t
@@ -55,6 +173,18 @@ int gig0/0
 ip address 20.0.0.1 255.255.255.252
 
 exit
+do wr
+
+
+###################thirdly
+
+en
+conf t
+router rip
+version 2
+network 20.0.0.0
+network 10.10.10.4
+ex
 do wr
 
 
@@ -81,8 +211,8 @@ do wr
 ###################thirdly
 en
 conf t
-int gig0/0.90
 
+int gig0/0.90
 encapsulation dot1Q 90
 ip address 192.168.9.1  255.255.255.0
 ex
@@ -107,5 +237,18 @@ ip dhcp pool StudentLab-pool
 network 192.168.10.0 255.255.255.0
 default-router 192.168.10.1
 dns-server 192.168.10.1
+ex
+do wr
+
+
+###################fifthly  ( RIPv2 )
+
+en
+conf t
+router rip
+version 2
+network 192.168.9.0
+network 192.168.10.0
+network 10.10.10.0
 ex
 do wr
