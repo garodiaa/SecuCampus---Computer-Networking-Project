@@ -145,6 +145,15 @@ switchport access vlan 80
 do wr
 exit
 
+#############secondly
+en
+conf t
+int gig1/0/1
+switchport trunk encapsulation dotlq
+switchport mode trunk
+exit
+do wr
+
 ################################ Branch Campus ###############################
 
 -------------------Branch Campus Staff Room Switch---------------
@@ -186,3 +195,10 @@ switchport access vlan 100
 
 do wr
 exit
+
+
+int gig1/0/1
+switchport trunk encapsulation dotlq
+switchport mode trunk
+exit
+do wr
